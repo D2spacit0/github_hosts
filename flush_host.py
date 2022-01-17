@@ -1,11 +1,18 @@
 # -*- coding: utf-8 -*-
-# @Time : 2021/12/25 21:25
+# @Time : 2022/1/5 16:58
 # @Author : D2spacit0
-# @File : flush_host
+# @File : update_host
 # @Email:yldiabolo@outlook.com
 
 
 import requests
+from bs4 import BeautifulSoup
+from os import system
+from time import sleep
+import datetime
+import threading
+from threading import Lock
+
 
 
 def get_host():
@@ -14,5 +21,13 @@ def get_host():
     return response.text
 
 
-if __name__ == "__main__":
-    get_host()
+def update_host():
+    text = get_host()
+    with open(r'C:\Windows\System32\drivers\etc\hosts', 'a+') as f:
+        f.truncate(0)
+        f.write(text)
+    system("ipconfig /flushdns")
+
+
+if __name__ == '__main__':
+    update_host()
