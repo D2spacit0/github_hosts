@@ -6,14 +6,7 @@
 
 
 import requests
-from bs4 import BeautifulSoup
 from os import system
-from time import sleep
-import datetime
-import threading
-from threading import Lock
-
-
 
 def get_hosts():
     response = requests.get("https://raw.hellogithub.com/hosts")
