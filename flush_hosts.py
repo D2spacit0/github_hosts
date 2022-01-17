@@ -15,14 +15,14 @@ from threading import Lock
 
 
 
-def get_host():
+def get_hosts():
     response = requests.get("https://raw.hellogithub.com/hosts")
     response.enconding = 'utf-8'
     return response.text
 
 
-def update_host():
-    text = get_host()
+def update_hosts():
+    text = get_hosts()
     with open(r'C:\Windows\System32\drivers\etc\hosts', 'a+') as f:
         f.truncate(0)
         f.write(text)
@@ -30,4 +30,4 @@ def update_host():
 
 
 if __name__ == '__main__':
-    update_host()
+    update_hosts()
