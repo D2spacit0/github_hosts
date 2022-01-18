@@ -36,6 +36,7 @@ def update_hosts():
         # 写入新的hosts
         f.write(text)
         # file.close()
+    system('chcp 936')
     system("ipconfig /flushdns")
 
 
